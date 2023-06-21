@@ -36,6 +36,7 @@
         <div class="container">
             <ul>
                 <li><a href="/admin">Admin</a></li>
+              {{--  <li><a href="{{route('adminlogin')}}">Admin Đăng Nhập</a></li>--}}
                 <li><a href="/gioithieu">Giới Thiệu</a></li>
                 <li><a href="/combo-khuyen-mai-pc579185.html">Sản Phẩm Khuyến Mại</a></li>
                 <li><a href="/chinh-sach-bao-hanh-n110655.html">Chính Sách Bảo Hành</a></li>

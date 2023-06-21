@@ -7,11 +7,31 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function login(){
         return view('Auth/login');
     }
+
+
+   /* public function processLogin(Request $request)
+    {
+        try {
+            $credentials = $request->only('email', 'password');
+
+            if (Auth::guard('user')->attempt($credentials)) {
+                // Đăng nhập thành công cho người dùng
+                $user = Auth::guard('user')->user();
+
+                return view('home.index')->with('user', $user);
+            } else {
+                throw new Exception('Invalid credentials');
+            }
+        } catch (Throwable $e) {
+            return redirect()->route('login');
+        }
+    }*/
     public function processLogin(Request $request)
     {
         try {
@@ -33,6 +53,7 @@ class AuthController extends Controller
             return redirect()->route('login');
         }
     }
+
 
 
     public function logout()

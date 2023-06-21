@@ -6,29 +6,34 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Web xịn</title>
-
-    <!-- Bootstrap CSS -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
 <body style="background-color: #d0cbcb">
 @extends('layouts.app')
 @section('content')
     <div class="container">
         <h1>Danh sách người dùng</h1>
+        @if(session()->has('name'))
+            <span class="account-user-name" style="padding-left: 7px;"><strong>{{ session()->get('name') }}</strong></span>
+            <div>
+                <a href="{{ url('/logoutad') }}" class="btn btn-primary">Logout</a>
+            </div>
+
+
+        @else
+            <li><a id="login-modal" class="js-buy-ticker" href="/loginadmin" data-bs-toggle="modal" data-bs-target="#getMember">Đăng nhập admin</a></li>
+        @endif
         <form action="{{ route('user.index') }}" method="GET">
+            @csrf
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Tìm kiếm" name="search" value="{{ $search }}">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
+            @csrf
         </form>
         <table class="table table-striped">
             <thead>
@@ -59,6 +64,7 @@
         <div class="text-center">
             <a href="{{ url('/home') }}" class="btn btn-primary">Home</a>
         </div>
+
     </div>
 @endsection
 @if ($users)
@@ -72,7 +78,6 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <!-- App scripts -->
 @stack('scripts')
-
 </body>
 </html>
 

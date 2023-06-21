@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SanphamController;
@@ -20,7 +21,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/home', function () {
     return view('home.index');
 });
-
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'processLogin'])->name('process_login');
@@ -30,6 +30,10 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('Chitiet', [SanphamController::class, 'Chitiet'])->name('Chitiet');
 Route::get('admin', [UserController::class, 'index'])->name('user.index');
 Route::get('/gioithieu', [HomeController::class, 'gioithieu'])->name('gioithieu');
+Route::get('/loginadmin', [AdminController::class, 'login'])->name('loginad');;
+Route::post('/loginadmin', [AdminController::class, 'processLogin'])->name('process_loginadmin');
+Route::get('/logoutad', [AdminController::class, 'logout'])->name('logoutad');
+
 
 
 
