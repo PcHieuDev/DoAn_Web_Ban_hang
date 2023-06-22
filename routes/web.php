@@ -48,6 +48,8 @@ Route::group([
     Route::get('admin/{id}', [UserController::class, 'show'])->name('user.show');
     // delete user
     Route::delete('admin/{id}', [UserController::class, 'destroy']);
+    // update user
+    Route::patch('admin/{id}', [UserController::class, 'update'])->name('user.update');
 
 });
 

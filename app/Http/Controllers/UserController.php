@@ -28,28 +28,40 @@ class UserController extends Controller
 
         return view('Admin.user', ['users' => $users, 'search' => $search]);
     }
-    // edit user
+
     public function edit($id)
     {
         $user = User::find($id);
         return view('Admin.edituser')->with('users', $user);
     }
-    // update user
+
     public function update(Request $request, $id)
     {
-        $input = $request->all();
-        $user = User::find($id);
-        $user->update($input);
-        return redirect('admin')->with('flash_message', 'User Updated!');
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'address' => 'required',
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->save();
+
+        return redirect('admin')->with('success', 'User updated successfully');
     }
-    // delete user
+
     public function destroy($id)
     {
         $user = User::find($id);
         $user->delete();
         return redirect('admin')->with('flash_message', 'User Deleted!');
     }
-    // show info user
+
     public function show($id)
     {
         $user = User::find($id);

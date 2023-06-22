@@ -16,8 +16,8 @@ class CheckLoginAdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (session()->get('adlevel') === 0) {
-            throw new \Exception(' Ban khong duoc lam the, dung lai di');
+        if(!session()->has('adlevel')){
+            return redirect()->route('loginad');
         }
         return $next($request);
     }

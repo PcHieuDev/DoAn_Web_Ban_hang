@@ -22,8 +22,6 @@
             <div>
                 <a href="{{ url('/logoutad') }}" class="btn btn-primary">Logout</a>
             </div>
-
-
         @else
             <li><a id="login-modal" class="js-buy-ticker" href="/loginadmin" data-bs-toggle="modal" data-bs-target="#getMember">Đăng nhập admin</a></li>
         @endif
@@ -53,9 +51,9 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone }}</td>
                         <td>{{ $user->address }}</td>
-                        // td actions edit , view, delete user
+
                         <td>
-                            <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('user.edit' , $user->id) }}" class="btn btn-primary">Edit</a>
                             <a href="{{ route('user.show', $user->id) }}" class="btn btn-primary">View</a>
                             <form method="POST" action="{{ url('/admin' . '/' . $user->id) }}" method="POST">
                                 {{ method_field('DELETE') }}

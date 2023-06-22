@@ -1,17 +1,25 @@
-<form action="{{ url('admin/' .$users->id) }}" method="post">
-    {!! csrf_field() !!}
-    @method("PATCH")
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" value="{{ $users->name }}"></div>
-    <div class="form-group">
-        <label for="email">Email</label><input type="email" class="form-control" id="email" name="email"
-                                               value="{{ $users->email }}"></div>
-    <div class="form-group"><label for="phone">Phone</label>
-        <input type="text" class="form-control" id="phone" name="phone" value="{{ $users->phone }}"></div>
-    <div class="form-group"><label for="address">Address</label><input type="text" class="form-control" id="address"
-                                                                       name="address" value="{{ $users->address }}">
+
+@section('content')
+
+    <div class="card">
+        <div class="card-header">Edit User</div>
+        <div class="card-body">
+
+            <form action="{{ url('admin/' .$users->id) }}" method="post">
+                {!! csrf_field() !!}
+                @method("PATCH")
+                <input type="hidden" name="id" id="id" value="{{$users->id}}" id="id" />
+                <label>Name</label></br>
+                <input type="text" name="name" id="name" value="{{$users->name}}" class="form-control"></br>
+                <label>Address</label></br>
+                <input type="text" name="address" id="address" value="{{$users->address}}" class="form-control"></br>
+                <label>Mobile</label></br>
+                <input type="text" name="mobile" id="mobile" value="{{$users->phone}}" class="form-control"></br>
+                <input type="submit" value="Update" class="btn btn-success"></br>
+            </form>
+
+        </div>
     </div>
-    <button type="submit" class="btn btn-primary">Update</button>
-    <a href="{{ url('/admin') }}" class="btn btn-primary">Back</a></form>
+
+@stop
 
