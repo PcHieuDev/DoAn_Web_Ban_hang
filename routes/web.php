@@ -30,6 +30,7 @@ Route::get('/home', function () {
     return view('home.index');
 });
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+    Route::get('/gioithieu', [HomeController::class, 'gioithieu'])->name('gioithieu');
 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('Chitiet', [SanphamController::class, 'Chitiet'])->name('Chitiet');
@@ -40,8 +41,13 @@ Route::get('/logoutad', [AdminController::class, 'logout'])->name('logoutad');
 Route::group([
     'middleware' => CheckLoginAdminMiddleware::class,
 ], function(){
-Route::get('/gioithieu', [HomeController::class, 'gioithieu'])->name('gioithieu');
     Route::get('admin', [UserController::class, 'index'])->name('user.index');
+    //
+    Route::get('admin/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+    // route show info user
+    Route::get('admin/{id}', [UserController::class, 'show'])->name('user.show');
+    // delete user
+    Route::delete('admin/{id}', [UserController::class, 'destroy']);
 
 });
 
