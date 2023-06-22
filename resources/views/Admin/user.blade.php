@@ -17,8 +17,8 @@
 @section('content')
     <div class="container">
         <h1>Danh sách người dùng</h1>
-        @if(session()->has('name'))
-            <span class="account-user-name" style="padding-left: 7px;"><strong>{{ session()->get('name') }}</strong></span>
+        @if(session()->has('ad_name'))
+            <span class="account-user-name" style="padding-left: 7px;"><strong>{{ session()->get('ad_name') }}</strong></span>
             <div>
                 <a href="{{ url('/logoutad') }}" class="btn btn-primary">Logout</a>
             </div>

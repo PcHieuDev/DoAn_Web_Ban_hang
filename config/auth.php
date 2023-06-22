@@ -41,12 +41,7 @@ return [
             'provider' => 'users',
         ],
     ],
-    'guards' => [
-        'user' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-    ],
+
 
 
     /*
