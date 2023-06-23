@@ -18,7 +18,7 @@ class CreateAdminsTable extends Migration
             $table->string("ad_name", );
             $table->string("email");
             $table->string("password");
-            $table->boolean('level');
+            $table->boolean('level')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
 
         });

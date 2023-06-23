@@ -18,7 +18,7 @@ class CreateHomesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('avatar')->nullable();
-            $table->boolean('level');
+            $table->boolean('level')->nullable();
             $table->string('email');
             $table->string('password');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

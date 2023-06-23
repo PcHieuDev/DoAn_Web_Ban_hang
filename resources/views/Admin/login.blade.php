@@ -6,7 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="vjp/style.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-    <title>Form đăng nhập </title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-heading {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px 0px 10px 30px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            font-size: 16px;
+        }
+
+        .form-input:focus {
+            outline: none;
+        }
+
+        .form-group i {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px;
+            color: #888;
+        }
+
+        .form-submit {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #337ab7;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .form-submit:hover {
+            background-color: #286090;
+        }
+
+        #eye {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 10px;
+            color: #888;
+            cursor: pointer;
+        }
+
+        .open i.fa-eye-slash {
+            display: none;
+        }
+    </style>
+    <title>Form đăng nhập</title>
 </head>
 <body>
 <div class="container">
@@ -26,7 +95,6 @@
                 </div>
             </div>
             <button type="submit" class="form-submit">Login</button>
-
         </form>
     </div>
 </div>
