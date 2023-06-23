@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Builder;
+
 use App\Models\User;
 
 class UserController extends Controller
 {
-    private Builder $model;
+
     public function index(Request $request)
     {
         $search = $request->input('search');

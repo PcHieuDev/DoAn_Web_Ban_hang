@@ -58,9 +58,17 @@ class AuthController extends Controller
 
     public function logout()
     {
-        session()->flush();
-
-        return redirect()->route('home.index');
+       // delete sesion level
+        session()->forget('level');
+        // delete session name
+        session()->forget('name');
+        // delete session id
+        session()->forget('id');
+        // delete session avatar
+        session()->forget('avatar');
+        // logout
+        Auth::guard('user')->logout();
+        return redirect()->route('login');
     }
 
     public function register()

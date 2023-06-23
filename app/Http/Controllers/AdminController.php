@@ -37,12 +37,22 @@ class AdminController extends Controller
         return redirect()->route('user.index');
     }
 
-    public function logout()
+   /* public function logout()
     {
         session()->flush();
 
         return redirect()->route('loginad');
+    }*/
+// logout admin
+    public function logout()
+    {
+       // delete sesion level
+        session()->forget('adlevel');
+        // delete session name
+        session()->forget('ad_name');
+        // logout
+        Auth::guard('web')->logout();
+        return redirect()->route('loginad');
     }
-
 
 }
