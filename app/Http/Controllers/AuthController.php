@@ -67,7 +67,7 @@ class AuthController extends Controller
         // delete session avatar
         session()->forget('avatar');
         // logout
-        Auth::guard('user')->logout();
+        Auth::guard('users')->logout();
         return redirect()->route('login');
     }
 
