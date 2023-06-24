@@ -11,27 +11,69 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        body {
+            background-color: #d0cbcb;
+        }
+
+        .container {
+            margin-top: 30px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .account-user-name {
+            padding-left: 7px;
+        }
+
+        .btn-primary {
+            margin-top: 10px;
+        }
+
+        .form-group {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .table {
+            margin-top: 20px;
+        }
+
+        .btn-group {
+            margin-bottom: 5px;
+        }
+
+        .text-center {
+            margin-top: 20px;
+        }
+
+        .pagination {
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
-<body style="background-color: #d0cbcb">
+<body>
 @extends('layouts.app')
 @section('content')
     <div class="container">
         <h1>Danh sách người dùng</h1>
         @if(session()->has('ad_name'))
-            <span class="account-user-name" style="padding-left: 7px;"><strong>{{ session()->get('ad_name') }}</strong></span>
+            <span class="account-user-name"><strong>{{ session()->get('ad_name') }}</strong></span>
             <div>
                 <a href="{{ url('/logoutad') }}" class="btn btn-primary">Logout</a>
             </div>
         @else
             <li><a id="login-modal" class="js-buy-ticker" href="/loginadmin" data-bs-toggle="modal" data-bs-target="#getMember">Đăng nhập admin</a></li>
         @endif
-        <form action="{{ route('user.index') }}" method="GET">
+        <form action="{{ route('user.index') }}" method="GET" class="form-inline">
             @csrf
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Tìm kiếm" name="search" value="{{ $search }}">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
-            @csrf
         </form>
         <table class="table table-striped">
             <thead>
@@ -51,21 +93,22 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone }}</td>
                         <td>{{ $user->address }}</td>
-
                         <td>
-                            <a href="{{ route('user.edit' , $user->id) }}" class="btn btn-primary">Edit</a>
-                            <a href="{{ route('user.show', $user->id) }}" class="btn btn-primary">View</a>
-                            <form method="POST" action="{{ url('/admin' . '/' . $user->id) }}" method="POST">
+                            <div class="btn-group">
+                                <a href="{{ route('user.edit' , $user->id) }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ route('user.show', $user->id) }}" class="btn btn-primary">View</a>
+                            </div>
+                            <form method="POST" action="{{ url('/admin' . '/' . $user->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa không?');">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
-                                <button onclick="return confirm('Bạn có chắc chắn muốn xóa không?');" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </td>
                     </tr>
                 @endforeach
             @else
                 <tr>
-                    <td colspan="4">Không tìm thấy kết quả.</td>
+                    <td colspan="5">Không tìm thấy kết quả.</td>
                 </tr>
             @endif
             </tbody>
@@ -73,7 +116,6 @@
         <div class="text-center">
             <a href="{{ url('/home') }}" class="btn btn-primary">Home</a>
         </div>
-
     </div>
 @endsection
 @if ($users)
@@ -89,4 +131,3 @@
 @stack('scripts')
 </body>
 </html>
-

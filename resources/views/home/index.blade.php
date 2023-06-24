@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,8 +45,6 @@
                 @if(session()->has('name'))
                     <span class="account-user-name" style="padding-left: 7px;"><strong>{{ session()->get('name') }}</strong></span>
                     <a style="color: whitesmoke; padding-left: 7px;" href="{{ route('logout') }}">Đăng Xuất</a>
-
-
                 @else
                     <li><a id="login-modal" class="js-buy-ticker" href="/login" data-bs-toggle="modal" data-bs-target="#getMember">Đăng nhập</a></li>
                 @endif
