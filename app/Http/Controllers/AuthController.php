@@ -14,24 +14,6 @@ class AuthController extends Controller
         return view('Auth/login');
     }
 
-
-   /* public function processLogin(Request $request)
-    {
-        try {
-            $credentials = $request->only('email', 'password');
-
-            if (Auth::guard('user')->attempt($credentials)) {
-                // Đăng nhập thành công cho người dùng
-                $user = Auth::guard('user')->user();
-
-                return view('home.index')->with('user', $user);
-            } else {
-                throw new Exception('Invalid credentials');
-            }
-        } catch (Throwable $e) {
-            return redirect()->route('login');
-        }
-    }*/
     public function processLogin(Request $request)
     {
         try {
@@ -90,4 +72,30 @@ class AuthController extends Controller
         return redirect()->route('home.index');;
         UserRegisteredEvent::dispatch($user);
     }
+    public function change()
+    {
+        return view('Auth.change');
+    }
+    // change password if remember old password
+    public function changePassword(Request $request)
+    {
+        $user = User::find(session()->get('id'));
+        $oldPassword = $request->get('oldPassword');
+        $newPassword = $request->get('newPassword');
+        $confirmPassword = $request->get('confirmPassword');
+
+        if (!Hash::check($oldPassword, $user->password)) {
+            return redirect()->route('home.index')->with('error', 'Old password is incorrect');
+        }
+
+        if ($newPassword != $confirmPassword) {
+            return redirect()->route('home.index')->with('error', 'New password and confirm password is not match');
+        }
+
+        $user->password = Hash::make($newPassword);
+        $user->save();
+
+        return redirect()->route('home.index')->with('success', 'Change password successfully');
+    }
+
 }

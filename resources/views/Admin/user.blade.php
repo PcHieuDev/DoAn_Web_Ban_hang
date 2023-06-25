@@ -116,6 +116,9 @@
         <div class="text-center">
             <a href="{{ url('/home') }}" class="btn btn-primary">Home</a>
         </div>
+        <div class="text-center">
+            <a href="{{ url('/danhmucsp') }}" class="btn btn-primary">Home</a>
+        </div>
     </div>
 @endsection
 @if ($users)

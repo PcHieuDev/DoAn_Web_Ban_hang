@@ -75,14 +75,14 @@
             display: none;
         }
     </style>
-    <title>Form đăng nhập</title>
+    <title>Admin</title>
 </head>
 <body>
 <div class="container">
     <div id="wrapper">
         <form method="post" action="{{ route('process_loginadmin') }}" id="form-login">
             @csrf
-            <h1 class="form-heading">Form đăng nhập</h1>
+            <h1 class="form-heading">Admin</h1>
             <div class="form-group">
                 <i class="far fa-envelope"></i>
                 <input type="email" name="email" class="form-input" placeholder="Email">

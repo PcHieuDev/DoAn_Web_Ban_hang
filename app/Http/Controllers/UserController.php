@@ -68,6 +68,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+
         return view('Admin.show')->with('users', $user);
     }
     // store user
@@ -75,6 +76,7 @@ class UserController extends Controller
     {
         $user = new User();
         $user->name     = $request->input('name');
+
         $user->email  = $request->input('email');
         $user->level    = $request->input('level');
         $user->address    = $request->input('address');
@@ -82,6 +84,10 @@ class UserController extends Controller
         $user->save();
         return redirect('admin')->with('flash_message', 'User Added!');
     }
+
+
+
+
 
 }
 

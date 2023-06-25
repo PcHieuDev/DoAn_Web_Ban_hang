@@ -102,14 +102,14 @@
             text-decoration: underline;
         }
     </style>
-    <title>Form đăng nhập</title>
+    <title>User</title>
 </head>
 <body>
 <div class="container">
     <div id="wrapper">
         <form method="post" action="{{ route('process_login') }}" id="form-login">
             @csrf
-            <h1 class="form-heading">Form đăng nhập</h1>
+            <h1 class="form-heading">User</h1>
             <div class="form-group">
                 <i class="far fa-envelope"></i>
                 <input type="email" name="email" class="form-input" placeholder="Email">
